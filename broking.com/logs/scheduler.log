@@ -1,0 +1,27 @@
+2023-12-13 04:50:04,633 ERROR scheduler Exception in Enqueue Events for Site broking.com
+Traceback (most recent call last):
+  File "env/lib/python3.10/site-packages/rq/job.py", line 552, in restore
+    raw_data = obj['data']
+KeyError: 'data'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "apps/frappe/frappe/utils/scheduler.py", line 78, in enqueue_events_for_site
+    enqueue_events(site=site)
+  File "apps/frappe/frappe/utils/scheduler.py", line 96, in enqueue_events
+    queued_jobs = get_jobs(site=site, key="job_type").get(site) or []
+  File "apps/frappe/frappe/utils/background_jobs.py", line 305, in get_jobs
+    jobs = q.jobs + get_running_jobs_in_queue(q)
+  File "apps/frappe/frappe/utils/background_jobs.py", line 344, in get_running_jobs_in_queue
+    current_job = worker.get_current_job()
+  File "env/lib/python3.10/site-packages/rq/worker.py", line 421, in get_current_job
+    return self.job_class.fetch(job_id, self.connection, self.serializer)
+  File "env/lib/python3.10/site-packages/rq/job.py", line 372, in fetch
+    job.refresh()
+  File "env/lib/python3.10/site-packages/rq/job.py", line 618, in refresh
+    self.restore(data)
+  File "env/lib/python3.10/site-packages/rq/job.py", line 554, in restore
+    raise NoSuchJobError('Unexpected job format: {0}'.format(obj))
+rq.exceptions.NoSuchJobError: Unexpected job format: {'last_heartbeat': b'2023-12-12T23:20:04.620747Z', 'status': b'started', 'started_at': b'2023-12-12T23:20:04.620747Z', 'worker_name': b'4780d7bb08ed4a39bc015c815a545611'}
+

@@ -1,0 +1,12 @@
+customer specfic
+
+
+1-20 KM   2RS PER KG
+20-40km    3rs  perkg
+40-50       4rsperkg
+
+90 -100 50per kg
+
+
+300 * 3
+

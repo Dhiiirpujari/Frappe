@@ -1,0 +1,148 @@
+# Folder selection
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench$ cd apps/
+
+# folder present
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps$ ls
+
+apps.zip  customer_info  frappe              payments
+broker    erpnext        library_department  students
+
+# inside app customer_info
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps$ cd customer_info/
+
+# list files
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ ls
+
+customer_info           license.txt  README.md         setup.py
+customer_info.egg-info  MANIFEST.in  requirements.txt
+
+# add origin to app (located repo in git)
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git remote add origin  https://github.com/Dhiiirpujari/Frappe-Apps.git
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/fra
+
+# configuring email to it
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git config --global user.email "dhirajpujari2000@gmail.com"
+
+# commiting to git with message "frappe first commit'
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git commit -m "frappe first commit"
+[master ebf833f] frappe first commit
+ 22 files changed, 707 insertions(+)
+ create mode 100644 customer_info/customer_info/doctype/__init__.py
+ create mode 100644 customer_info/customer_info/doctype/calend/__init__.py
+ create mode 100644 customer_info/customer_info/doctype/calend/calend.js
+ create mode 100644 customer_info/customer_info/doctype/calend/calend.json
+ create mode 100644 customer_info/customer_info/doctype/calend/calend.py
+ create mode 100644 customer_info/customer_info/doctype/calend/test_calend.py
+ create mode 100644 customer_info/customer_info/doctype/client_side_scripting/__init__.py
+ create mode 100644 customer_info/customer_info/doctype/client_side_scripting/client_side_scripting.js
+ create mode 100644 customer_info/customer_info/doctype/client_side_scripting/client_side_scripting.json
+ create mode 100644 customer_info/customer_info/doctype/client_side_scripting/client_side_scripting.py
+ create mode 100644 customer_info/customer_info/doctype/client_side_scripting/test_client_side_scripting.py
+ create mode 100644 customer_info/customer_info/doctype/dates/__init__.py
+ create mode 100644 customer_info/customer_info/doctype/dates/dates.json
+ create mode 100644 customer_info/customer_info/doctype/dates/dates.py
+ create mode 100644 customer_info/customer_info/doctype/family_members/__init__.py
+ create mode 100644 customer_info/customer_info/doctype/family_members/family_members.json
+ create mode 100644 customer_info/customer_info/doctype/family_members/family_members.py
+ create mode 100644 customer_info/customer_info/doctype/information/__init__.py
+ create mode 100644 customer_info/customer_info/doctype/information/information.js
+ create mode 100644 customer_info/customer_info/doctype/information/information.json
+ create mode 100644 customer_info/customer_info/doctype/information/information.py
+ create mode 100644 customer_info/customer_info/doctype/information/test_information.py
+ 
+# Selecting branch to main
+ 
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git branch -M main
+
+# pushing to origin repo
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git push -u origin main
+
+# configuring global user name (add user name of git here)
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git config --global user.name "Dhiiirpujari"
+
+# for checking git status 
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git status
+On branch main
+nothing to commit, working tree clean
+
+# pushing on mian branch with username and pass (Password is token )
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git push -u origin main
+Username for 'https://github.com': Dhiiirpujari
+Password for 'https://Dhiiirpujari@github.com': 
+Enumerating objects: 48, done.
+Counting objects: 100% (48/48), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (40/40), done.
+Writing objects: 100% (48/48), 10.71 KiB | 1.78 MiB/s, done.
+Total 48 (delta 9), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (9/9), done.
+To https://github.com/Dhiiirpujari/Frappe-Apps.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+# if perform some update in file (similar file ) run below command to add all 
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git add .
+
+# after adding all check status shows changes
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   customer_info/customer_info/doctype/client_side_scripting/client_side_scripting.js
+
+
+# commit changes to git with message here msg is "change 1"
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git commit -m "change 1"
+[main a7f73ab] change 1
+ 1 file changed, 1 insertion(+)
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+# push to git
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git push
+Username for 'https://github.com': Dhiiirpujari
+Password for 'https://Dhiiirpujari@github.com': 
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 587 bytes | 587.00 KiB/s, done.
+Total 7 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To https://github.com/Dhiiirpujari/Frappe-Apps.git
+   ebf833f..a7f73ab  main -> main
+   
+# For pulling files from git
+     
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git pull
+
+
+
+# IF YOU WANT TO PULL FILES FROM ANOTHER BRANCH OR REPO YOU HAVE TO MENTION THOSE REPO
+# OR BRANCH NAME
+
+
+# for creating nw branch or change to that branch
+
+dhiraj@dhiraj-HP-ProDesk-600-G1-SFF:~/frappe-bench/apps/customer_info$ git checkout -b branch_name    
+
+

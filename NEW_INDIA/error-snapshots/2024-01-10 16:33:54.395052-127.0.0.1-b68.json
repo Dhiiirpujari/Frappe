@@ -1,0 +1,628 @@
+{
+ "etype": "ProgrammingError",
+ "evalue": "ProgrammingError(1146, \"Table '_1fb9db47a8d26d78.tabSingles' doesn't exist\")",
+ "exception": {
+  "args": [
+   40,
+   49,
+   49,
+   52,
+   54,
+   44,
+   32,
+   34,
+   84,
+   97,
+   98,
+   108,
+   101,
+   32,
+   39,
+   95,
+   49,
+   102,
+   98,
+   57,
+   100,
+   98,
+   52,
+   55,
+   97,
+   56,
+   100,
+   50,
+   54,
+   100,
+   55,
+   56,
+   46,
+   116,
+   97,
+   98,
+   83,
+   105,
+   110,
+   103,
+   108,
+   101,
+   115,
+   39,
+   32,
+   100,
+   111,
+   101,
+   115,
+   110,
+   39,
+   116,
+   32,
+   101,
+   120,
+   105,
+   115,
+   116,
+   34,
+   41
+  ],
+  "with_traceback": [
+   60,
+   98,
+   117,
+   105,
+   108,
+   116,
+   45,
+   105,
+   110,
+   32,
+   109,
+   101,
+   116,
+   104,
+   111,
+   100,
+   32,
+   119,
+   105,
+   116,
+   104,
+   95,
+   116,
+   114,
+   97,
+   99,
+   101,
+   98,
+   97,
+   99,
+   107,
+   32,
+   111,
+   102,
+   32,
+   80,
+   114,
+   111,
+   103,
+   114,
+   97,
+   109,
+   109,
+   105,
+   110,
+   103,
+   69,
+   114,
+   114,
+   111,
+   114,
+   32,
+   111,
+   98,
+   106,
+   101,
+   99,
+   116,
+   62
+  ]
+ },
+ "frames": [
+  {
+   "call": "(request=<Request 'http://127.0.0.1:8000/' [GET]>)",
+   "dump": {
+    "global init_request": "<function init_request>",
+    "request": "<Request 'http://127.0.0.1:8000/' [GET]>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/app.py",
+   "func": "application",
+   "lines": {
+    "82": "\t\trollback = True",
+    "83": "",
+    "84": "\t\tinit_request(request)",
+    "85": "",
+    "86": "\t\tfrappe.api.validate_auth()"
+   },
+   "lnum": 84
+  },
+  {
+   "call": "(request=<Request 'http://127.0.0.1:8000/' [GET]>)",
+   "dump": {
+    "frappe. auth": "<module 'frappe.auth' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py'>",
+    "frappe. local": "<werkzeug.local.Local object>",
+    "frappe.auth. HTTPRequest": "<class 'frappe.auth.HTTPRequest'>",
+    "frappe.local.http_request": "undefined",
+    "global frappe": "<module 'frappe' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/__init__.py'>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/app.py",
+   "func": "init_request",
+   "lines": {
+    "173": "",
+    "174": "\tif request.method != \"OPTIONS\":",
+    "175": "\t\tfrappe.local.http_request = frappe.auth.HTTPRequest()",
+    "176": "",
+    "177": "\tfor before_request_task in frappe.get_hooks(\"before_request\"):"
+   },
+   "lnum": 175
+  },
+  {
+   "call": "(self=<frappe.auth.HTTPRequest object>)",
+   "dump": {
+    "self": "<frappe.auth.HTTPRequest object>",
+    "self. set_session": "<bound method HTTPRequest.set_session of <frappe.auth.HTTPRequest object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py",
+   "func": "__init__",
+   "lines": {
+    "35": "",
+    "36": "\t\t# login and start/resume user session",
+    "37": "\t\tself.set_session()",
+    "38": "",
+    "39": "\t\t# set request language"
+   },
+   "lnum": 37
+  },
+  {
+   "call": "(self=<frappe.auth.HTTPRequest object>)",
+   "dump": {
+    "frappe. local": "<werkzeug.local.Local object>",
+    "frappe.local.login_manager": "undefined",
+    "global LoginManager": "<class 'frappe.auth.LoginManager'>",
+    "global frappe": "<module 'frappe' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/__init__.py'>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py",
+   "func": "set_session",
+   "lines": {
+    "71": "",
+    "72": "\tdef set_session(self):",
+    "73": "\t\tfrappe.local.login_manager = LoginManager()",
+    "74": "",
+    "75": "\tdef validate_csrf_token(self):"
+   },
+   "lnum": 73
+  },
+  {
+   "call": "(self=<frappe.auth.LoginManager object>)",
+   "dump": {
+    "resume": "undefined",
+    "self": "<frappe.auth.LoginManager object>",
+    "self. make_session": "<bound method LoginManager.make_session of <frappe.auth.LoginManager object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py",
+   "func": "__init__",
+   "lines": {
+    "120": "\t\t\ttry:",
+    "121": "\t\t\t\tself.resume = True",
+    "122": "\t\t\t\tself.make_session(resume=True)",
+    "123": "\t\t\t\tself.get_user_info()",
+    "124": "\t\t\t\tself.set_user_info(resume=True)"
+   },
+   "lnum": 122
+  },
+  {
+   "call": "(self=<frappe.auth.LoginManager object>, resume=True)",
+   "dump": {
+    "frappe. local": "<werkzeug.local.Local object>",
+    "frappe.local.session_obj": "undefined",
+    "full_name": "undefined",
+    "global Session": "<class 'frappe.sessions.Session'>",
+    "global frappe": "<module 'frappe' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/__init__.py'>",
+    "resume": "True",
+    "self": "<frappe.auth.LoginManager object>",
+    "self. full_name": "None",
+    "self. user": "None",
+    "self. user_type": "None",
+    "user": "undefined",
+    "user_type": "undefined"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py",
+   "func": "make_session",
+   "lines": {
+    "208": "\tdef make_session(self, resume=False):",
+    "209": "\t\t# start session",
+    "210": "\t\tfrappe.local.session_obj = Session(",
+    "211": "\t\t\tuser=self.user, resume=resume, full_name=self.full_name, user_type=self.user_type",
+    "212": "\t\t)"
+   },
+   "lnum": 210
+  },
+  {
+   "call": "(self=<frappe.sessions.Session object>, user=None, resume=True, full_name=None, user_type=None)",
+   "dump": {
+    "self": "<frappe.sessions.Session object>",
+    "self. resume": "<bound method Session.resume of <frappe.sessions.Session object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py",
+   "func": "__init__",
+   "lines": {
+    "228": "",
+    "229": "\t\tif resume:",
+    "230": "\t\t\tself.resume()",
+    "231": "",
+    "232": "\t\telse:"
+   },
+   "lnum": 230
+  },
+  {
+   "call": "(self=<frappe.sessions.Session object>)",
+   "dump": {
+    "data": "undefined",
+    "self": "<frappe.sessions.Session object>",
+    "self. get_session_record": "<bound method Session.get_session_record of <frappe.sessions.Session object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py",
+   "func": "resume",
+   "lines": {
+    "301": "\t\tfrom frappe.auth import validate_ip_address",
+    "302": "",
+    "303": "\t\tdata = self.get_session_record()",
+    "304": "",
+    "305": "\t\tif data:"
+   },
+   "lnum": 303
+  },
+  {
+   "call": "(self=<frappe.sessions.Session object>)",
+   "dump": {
+    "r": "undefined",
+    "self": "<frappe.sessions.Session object>",
+    "self. get_session_data": "<bound method Session.get_session_data of <frappe.sessions.Session object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py",
+   "func": "get_session_record",
+   "lines": {
+    "319": "\t\tfrom frappe.auth import clear_cookies",
+    "320": "",
+    "321": "\t\tr = self.get_session_data()",
+    "322": "",
+    "323": "\t\tif not r:"
+   },
+   "lnum": 321
+  },
+  {
+   "call": "(self=<frappe.sessions.Session object>)",
+   "dump": {
+    "data": "None",
+    "self": "<frappe.sessions.Session object>",
+    "self. get_session_data_from_db": "<bound method Session.get_session_data_from_db of <frappe.sessions.Session object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py",
+   "func": "get_session_data",
+   "lines": {
+    "335": "\t\tdata = self.get_session_data_from_cache()",
+    "336": "\t\tif not data:",
+    "337": "\t\t\tdata = self.get_session_data_from_db()",
+    "338": "\t\treturn data",
+    "339": ""
+   },
+   "lnum": 337
+  },
+  {
+   "call": "(self=<frappe.sessions.Session object>)",
+   "dump": {
+    "fieldname": "undefined",
+    "filters": "undefined",
+    "frappe. db": "<frappe.database.mariadb.database.MariaDBDatabase object>",
+    "frappe.db. get_value": "<bound method Database.get_value of <frappe.database.mariadb.database.MariaDBDatabase object>>",
+    "global frappe": "<module 'frappe' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/__init__.py'>",
+    "order_by": "undefined",
+    "self": "<frappe.sessions.Session object>",
+    "self. sid": "'15519951d72c441deafad7a23c0663ebad54ba6f0229097be66a2afe'",
+    "sessions": "Table('tabSessions')",
+    "sessions. sid": "<pypika.terms.Field object>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py",
+   "func": "get_session_data_from_db",
+   "lines": {
+    "360": "",
+    "361": "\t\tself.device = (",
+    "362": "\t\t\tfrappe.db.get_value(",
+    "363": "\t\t\t\tsessions,",
+    "364": "\t\t\t\tfilters=sessions.sid == self.sid,"
+   },
+   "lnum": 362
+  },
+  {
+   "call": "(self=<frappe.database.mariadb.database.MariaDBDatabase object>, doctype=Table('tabSessions'), filters=<pypika.terms.BasicCriterion object>, fieldname='device', ignore=None, as_dict=False, debug=False, order_by=None, cache=False, for_update=False, run=True, pluck=False, distinct=False)",
+   "dump": {
+    "as_dict": "False",
+    "cache": "False",
+    "debug": "False",
+    "distinct": "False",
+    "doctype": "Table('tabSessions')",
+    "fieldname": "'device'",
+    "filters": "<pypika.terms.BasicCriterion object>",
+    "for_update": "False",
+    "ignore": "None",
+    "limit": "undefined",
+    "order_by": "None",
+    "pluck": "False",
+    "result": "undefined",
+    "run": "True",
+    "self": "<frappe.database.mariadb.database.MariaDBDatabase object>",
+    "self. get_values": "<bound method Database.get_values of <frappe.database.mariadb.database.MariaDBDatabase object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py",
+   "func": "get_value",
+   "lines": {
+    "507": "\t\t\"\"\"",
+    "508": "",
+    "509": "\t\tresult = self.get_values(",
+    "510": "\t\t\tdoctype,",
+    "511": "\t\t\tfilters,"
+   },
+   "lnum": 509
+  },
+  {
+   "call": "(self=<frappe.database.mariadb.database.MariaDBDatabase object>, doctype=Table('tabSessions'), filters=<pypika.terms.BasicCriterion object>, fieldname='device', ignore=None, as_dict=False, debug=False, order_by=None, update=None, cache=False, for_update=False, run=True, pluck=False, distinct=False, limit=1)",
+   "dump": {
+    "as_dict": "False",
+    "debug": "False",
+    "distinct": "False",
+    "doctype": "Table('tabSessions')",
+    "fields": "['device']",
+    "filters": "<pypika.terms.BasicCriterion object>",
+    "out": "None",
+    "run": "True",
+    "self": "<frappe.database.mariadb.database.MariaDBDatabase object>",
+    "self. get_values_from_single": "<bound method Database.get_values_from_single of...atabase.mariadb.database.MariaDBDatabase object>>",
+    "update": "None"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py",
+   "func": "get_values",
+   "lines": {
+    "624": "\t\t\t\t\telif (not ignore) and frappe.db.is_table_missing(e):",
+    "625": "\t\t\t\t\t\t# table not found, look in singles",
+    "626": "\t\t\t\t\t\tout = self.get_values_from_single(",
+    "627": "\t\t\t\t\t\t\tfields, filters, doctype, as_dict, debug, update, run=run, distinct=distinct",
+    "628": "\t\t\t\t\t\t)"
+   },
+   "lnum": 626
+  },
+  {
+   "call": "(self=<frappe.database.mariadb.database.MariaDBDatabase object>, fields=['device'], filters=<pypika.terms.BasicCriterion object>, doctype=Table('tabSessions'), as_dict=False, debug=False, update=None, run=True, pluck=False, distinct=False)",
+   "dump": {
+    ").run": "undefined",
+    "as_dict": "False",
+    "builtin tuple": "<class 'tuple'>",
+    "debug": "False",
+    "distinct": "False",
+    "doctype": "Table('tabSessions')",
+    "fields": "['device']",
+    "filters": "<pypika.terms.BasicCriterion object>",
+    "frappe. qb": "<class 'frappe.query_builder.builder.MariaDB'>",
+    "frappe.qb. get_query": "<function get_query>",
+    "global frappe": "<module 'frappe' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/__init__.py'>",
+    "pluck": "False",
+    "r": "undefined"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py",
+   "func": "get_values_from_single",
+   "lines": {
+    "674": "",
+    "675": "\t\telse:",
+    "676": "\t\t\tr = frappe.qb.get_query(",
+    "677": "\t\t\t\t\"Singles\",",
+    "678": "\t\t\t\tfilters={\"field\": (\"in\", tuple(fields)), \"doctype\": doctype},"
+   },
+   "lnum": 676
+  },
+  {
+   "call": "(query='SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN (%(param1)s) AND `doctype`=`tabSessions`', *args=(), **kwargs={'as_dict': False, 'debug': False, 'pluck': False})",
+   "dump": {
+    "args": "()",
+    "frappe. db": "<frappe.database.mariadb.database.MariaDBDatabase object>",
+    "frappe.db. sql": "<bound method Database.sql of <frappe.database.mariadb.database.MariaDBDatabase object>>",
+    "global frappe": "<module 'frappe' from '/home/dhiraj/frappe-bench/apps/frappe/frappe/__init__.py'>",
+    "kwargs": "{'as_dict': False, 'debug': False, 'pluck': False}",
+    "params": "{'param1': 'device'}",
+    "query": "'SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN (%(param1)s) AND `doctype`=`tabSessions`'",
+    "result": "undefined"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/query_builder/utils.py",
+   "func": "execute_query",
+   "lines": {
+    "85": "\t\tchild_queries = query._child_queries if isinstance(query._child_queries, list) else []",
+    "86": "\t\tquery, params = prepare_query(query)",
+    "87": "\t\tresult = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep",
+    "88": "\t\texecute_child_queries(child_queries, result)",
+    "89": "\t\treturn result"
+   },
+   "lnum": 87
+  },
+  {
+   "call": "(self=<frappe.database.mariadb.database.MariaDBDatabase object>, query='SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN (%(param1)s) AND `doctype`=`tabSessions`', values={'param1': 'device'}, as_dict=False, as_list=0, formatted=0, debug=False, ignore_ddl=0, as_utf8=0, auto_commit=0, update=None, explain=False, run=True, pluck=False)",
+   "dump": {
+    "query": "'SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN (%(param1)s) AND `doctype`=`tabSessions`'",
+    "self": "<frappe.database.mariadb.database.MariaDBDatabase object>",
+    "self. _cursor": "<pymysql.cursors.Cursor object>",
+    "self._cursor. execute": "<bound method Cursor.execute of <pymysql.cursors.Cursor object>>",
+    "values": "{'param1': 'device'}"
+   },
+   "file": "/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py",
+   "func": "sql",
+   "lines": {
+    "218": "",
+    "219": "\t\ttry:",
+    "220": "\t\t\tself._cursor.execute(query, values)",
+    "221": "\t\texcept Exception as e:",
+    "222": "\t\t\tif self.is_syntax_error(e):"
+   },
+   "lnum": 220
+  },
+  {
+   "call": "(self=<pymysql.cursors.Cursor object>, query=\"SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN ('device') AND `doctype`=`tabSessions`\", args={'param1': 'device'})",
+   "dump": {
+    "query": "\"SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN ('device') AND `doctype`=`tabSessions`\"",
+    "result": "undefined",
+    "self": "<pymysql.cursors.Cursor object>",
+    "self. _query": "<bound method Cursor._query of <pymysql.cursors.Cursor object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/cursors.py",
+   "func": "execute",
+   "lines": {
+    "156": "        query = self.mogrify(query, args)",
+    "157": "",
+    "158": "        result = self._query(query)",
+    "159": "        self._executed = query",
+    "160": "        return result"
+   },
+   "lnum": 158
+  },
+  {
+   "call": "(self=<pymysql.cursors.Cursor object>, q=\"SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN ('device') AND `doctype`=`tabSessions`\")",
+   "dump": {
+    "conn": "<pymysql.connections.Connection object>",
+    "conn. query": "<bound method Connection.query of <pymysql.connections.Connection object>>",
+    "q": "\"SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN ('device') AND `doctype`=`tabSessions`\""
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/cursors.py",
+   "func": "_query",
+   "lines": {
+    "323": "        conn = self._get_db()",
+    "324": "        self._clear_result()",
+    "325": "        conn.query(q)",
+    "326": "        self._do_get_result()",
+    "327": "        return self.rowcount"
+   },
+   "lnum": 325
+  },
+  {
+   "call": "(self=<pymysql.connections.Connection object>, sql=b\"SELECT `field`,`value` FROM `tabSingles` WHERE `field` IN ('device') AND `doctype`=`tabSessions`\", unbuffered=False)",
+   "dump": {
+    "self": "<pymysql.connections.Connection object>",
+    "self. _affected_rows": "0",
+    "self. _read_query_result": "<bound method Connection._read_query_result of <pymysql.connections.Connection object>>",
+    "unbuffered": "False"
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py",
+   "func": "query",
+   "lines": {
+    "547": "            sql = sql.encode(self.encoding, \"surrogateescape\")",
+    "548": "        self._execute_command(COMMAND.COM_QUERY, sql)",
+    "549": "        self._affected_rows = self._read_query_result(unbuffered=unbuffered)",
+    "550": "        return self._affected_rows",
+    "551": ""
+   },
+   "lnum": 549
+  },
+  {
+   "call": "(self=<pymysql.connections.Connection object>, unbuffered=False)",
+   "dump": {
+    "result": "<pymysql.connections.MySQLResult object>",
+    "result. read": "<bound method MySQLResult.read of <pymysql.connections.MySQLResult object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py",
+   "func": "_read_query_result",
+   "lines": {
+    "777": "        else:",
+    "778": "            result = MySQLResult(self)",
+    "779": "            result.read()",
+    "780": "        self._result = result",
+    "781": "        if result.server_status is not None:"
+   },
+   "lnum": 779
+  },
+  {
+   "call": "(self=<pymysql.connections.MySQLResult object>)",
+   "dump": {
+    "first_packet": "undefined",
+    "self": "<pymysql.connections.MySQLResult object>",
+    "self. connection": "None",
+    "self.connection._read_packet": "undefined"
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py",
+   "func": "read",
+   "lines": {
+    "1155": "    def read(self):",
+    "1156": "        try:",
+    "1157": "            first_packet = self.connection._read_packet()",
+    "1158": "",
+    "1159": "            if first_packet.is_ok_packet():"
+   },
+   "lnum": 1157
+  },
+  {
+   "call": "(self=<pymysql.connections.Connection object>, packet_type=<class 'pymysql.protocol.MysqlPacket'>)",
+   "dump": {
+    "packet": "<pymysql.protocol.MysqlPacket object>",
+    "packet. raise_for_error": "<bound method MysqlPacket.raise_for_error of <pymysql.protocol.MysqlPacket object>>"
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py",
+   "func": "_read_packet",
+   "lines": {
+    "727": "            if self._result is not None and self._result.unbuffered_active is True:",
+    "728": "                self._result.unbuffered_active = False",
+    "729": "            packet.raise_for_error()",
+    "730": "        return packet",
+    "731": ""
+   },
+   "lnum": 729
+  },
+  {
+   "call": "(self=<pymysql.protocol.MysqlPacket object>)",
+   "dump": {
+    "err. raise_mysql_exception": "<function raise_mysql_exception>",
+    "global err": "<module 'pymysql.err' from '/home/dhiraj/frappe-...env/lib/python3.10/site-packages/pymysql/err.py'>",
+    "self": "<pymysql.protocol.MysqlPacket object>",
+    "self. _data": "b\"\\xffz\\x04#42S02Table '_1fb9db47a8d26d78.tabSingles' doesn't exist\""
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/protocol.py",
+   "func": "raise_for_error",
+   "lines": {
+    "219": "        if DEBUG:",
+    "220": "            print(\"errno =\", errno)",
+    "221": "        err.raise_mysql_exception(self._data)",
+    "222": "",
+    "223": "    def dump(self):"
+   },
+   "lnum": 221
+  },
+  {
+   "call": "(data=b\"\\xffz\\x04#42S02Table '_1fb9db47a8d26d78.tabSingles' doesn't exist\")",
+   "dump": {
+    "errno": "1146",
+    "errorclass": "<class 'pymysql.err.ProgrammingError'>",
+    "errval": "\"Table '_1fb9db47a8d26d78.tabSingles' doesn't exist\""
+   },
+   "file": "/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/err.py",
+   "func": "raise_mysql_exception",
+   "lines": {
+    "139": "    errval = data[9:].decode(\"utf-8\", \"replace\")",
+    "140": "    errorclass = error_map.get(errno)",
+    "141": "    if errorclass is None:",
+    "142": "        errorclass = InternalError if errno < 1000 else OperationalError",
+    "143": "    raise errorclass(errno, errval)"
+   },
+   "lnum": 143
+  }
+ ],
+ "locals": {
+  "data": "b\"\\xffz\\x04#42S02Table '_1fb9db47a8d26d78.tabSingles' doesn't exist\"",
+  "errno": "1146",
+  "errorclass": "<class 'pymysql.err.ProgrammingError'>",
+  "errval": "Table '_1fb9db47a8d26d78.tabSingles' doesn't exist"
+ },
+ "pyver": "Python 3.10.12: /home/dhiraj/frappe-bench/env/bin/python (prefix: /home/dhiraj/frappe-bench/env)",
+ "timestamp": "2024-01-10 16:33:54.395118",
+ "traceback": "Traceback (most recent call last):\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 606, in get_values\n    out = self._get_values_from_table(\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 835, in _get_values_from_table\n    return query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/query_builder/utils.py\", line 87, in execute_query\n    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 220, in sql\n    self._cursor.execute(query, values)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/cursors.py\", line 158, in execute\n    result = self._query(query)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/cursors.py\", line 325, in _query\n    conn.query(q)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 549, in query\n    self._affected_rows = self._read_query_result(unbuffered=unbuffered)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 779, in _read_query_result\n    result.read()\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 1157, in read\n    first_packet = self.connection._read_packet()\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 729, in _read_packet\n    packet.raise_for_error()\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/protocol.py\", line 221, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/err.py\", line 143, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.ProgrammingError: (1146, \"Table '_1fb9db47a8d26d78.tabSessions' doesn't exist\")\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/app.py\", line 84, in application\n    init_request(request)\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/app.py\", line 175, in init_request\n    frappe.local.http_request = frappe.auth.HTTPRequest()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py\", line 37, in __init__\n    self.set_session()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py\", line 73, in set_session\n    frappe.local.login_manager = LoginManager()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py\", line 122, in __init__\n    self.make_session(resume=True)\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/auth.py\", line 210, in make_session\n    frappe.local.session_obj = Session(\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py\", line 230, in __init__\n    self.resume()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py\", line 303, in resume\n    data = self.get_session_record()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py\", line 321, in get_session_record\n    r = self.get_session_data()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py\", line 337, in get_session_data\n    data = self.get_session_data_from_db()\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/sessions.py\", line 362, in get_session_data_from_db\n    frappe.db.get_value(\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 509, in get_value\n    result = self.get_values(\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 626, in get_values\n    out = self.get_values_from_single(\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 676, in get_values_from_single\n    r = frappe.qb.get_query(\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/query_builder/utils.py\", line 87, in execute_query\n    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep\n  File \"/home/dhiraj/frappe-bench/apps/frappe/frappe/database/database.py\", line 220, in sql\n    self._cursor.execute(query, values)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/cursors.py\", line 158, in execute\n    result = self._query(query)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/cursors.py\", line 325, in _query\n    conn.query(q)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 549, in query\n    self._affected_rows = self._read_query_result(unbuffered=unbuffered)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 779, in _read_query_result\n    result.read()\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 1157, in read\n    first_packet = self.connection._read_packet()\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/connections.py\", line 729, in _read_packet\n    packet.raise_for_error()\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/protocol.py\", line 221, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/home/dhiraj/frappe-bench/env/lib/python3.10/site-packages/pymysql/err.py\", line 143, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.ProgrammingError: (1146, \"Table '_1fb9db47a8d26d78.tabSingles' doesn't exist\")\n"
+}
